@@ -19,7 +19,7 @@ import java.util.BitSet;
 public class AdminController {
     public static void main(String[] args) {
         containChars("abc");
-
+        System.out.println();
     }
     public static void containChars(String str) {
         BitSet used = new BitSet();
