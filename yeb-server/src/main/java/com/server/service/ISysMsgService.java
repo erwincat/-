@@ -1,0 +1,16 @@
+package com.server.service;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.server.pojo.SysMsg;
+
+/**
+ * <p>
+ *  服务类
+ * </p>
+ *
+ * @author fc
+ * @since 2021-05-07
+ */
+public interface ISysMsgService extends IService<SysMsg> {
+
+}
