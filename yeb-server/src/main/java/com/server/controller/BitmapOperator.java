@@ -19,6 +19,7 @@ public class BitmapOperator {
     protected BitSet bitSet;
 
     public BitmapOperator() {
+        System.out.println();
     }
 
     public BitmapOperator(BitSet bitSet) {
