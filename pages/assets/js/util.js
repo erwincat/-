@@ -43,3 +43,15 @@ var EventUtil = {
 		}
 	}
 };
+
+//取出字符串首尾空格
+function trim(str){
+	var strTemp = str.replace(/^\s+/,""),
+		end = strTemp.length -1,
+		ws = /\s/;
+	while(ws.test(strTemp.charAt(end))){
+		end-- ;
+
+	} 
+	return strTemp.slice(0,end + 1);
+}
