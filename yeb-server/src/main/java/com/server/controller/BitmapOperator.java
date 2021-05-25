@@ -12,9 +12,9 @@ public class BitmapOperator {
 
     private static final long serialVersionUID = 1L;
 
-    protected final static int ADDRESS_BITS_PER_WORD = 6;
-    protected final static int BITS_PER_WORD         = 1 << ADDRESS_BITS_PER_WORD;//单页的bit数量
-    protected final static int BIT_INDEX_MASK        = BITS_PER_WORD - 1;
+    protected final static int ADDRESS_BITS_PER_WORD = 6;  //寻找 bit在long数组中的位置
+    protected final static int BITS_PER_WORD         = 1 << ADDRESS_BITS_PER_WORD;//单页的bit数量  64
+    protected final static int BIT_INDEX_MASK        = BITS_PER_WORD - 1;  //65
 
     protected BitSet bitSet;
 
@@ -37,6 +37,9 @@ public class BitmapOperator {
         return bitSet.toLongArray();
     }
 
+    /*
+    * 在数组的起始位置为startInt，终止节点为endInt，找到一段长度为interval 连续为0的区间。
+    * */
     public int[] setBit(int startInt, int endInt, int interval) {
 
         int intervalTmp = interval;
@@ -64,6 +67,7 @@ public class BitmapOperator {
 
         return ints;
     }
+    //从startInt位置开始  找到一段 长度为interval连续为0的区间，然后返回去，然后看看
 
     public int[] getNextClearBits(int startInt, int interval) {
 
@@ -98,6 +102,7 @@ public class BitmapOperator {
      * @return 已清理位
      * @see BitSet#clear()
      */
+    //用于清除 洗车工已经服务的时间、
     public int[] cleanBit(int startIndex, int endIndex) {
 
         if (startIndex > endIndex)
@@ -112,7 +117,7 @@ public class BitmapOperator {
             ints[i] = i + startIndex;
         }
         if (by != 0b1)
-            return new int[]{};
+            return new int[]{}; 
 
         bitSet.clear(startIndex, endIndex + 1);
         return ints;
@@ -125,7 +130,7 @@ public class BitmapOperator {
      * @param totalBit    需要剔除的位数
      * @return 移动后的数组
      */
-    public static long[] rangeBitmap(Long[] originArray, final int totalBit) {
+    public  long[] rangeBitmap(Long[] originArray, final int totalBit) {
         double totalKickOut = (double) totalBit / BITS_PER_WORD;//需要被踢出的页数
         double modsLong = totalKickOut - (totalBit >> 6);//取出未满的一页的页数
         short numberOfNeedBits = (short) (modsLong * BITS_PER_WORD);//未满一页的bit数
@@ -133,9 +138,7 @@ public class BitmapOperator {
             return new long[0];//长度不够直接扔掉
         }
         Long[] rangeOriginArray = Arrays.copyOfRange(originArray, (totalBit >> 6), originArray.length);
-        return numberOfNeedBits == 0
-                ? shiftBitmap(rangeOriginArray, numberOfNeedBits)
-                : ArrayUtils.toPrimitive(rangeOriginArray);
+        return numberOfNeedBits == 0 ? shiftBitmap(rangeOriginArray, numberOfNeedBits) : ArrayUtils.toPrimitive(rangeOriginArray);
     }
 
     /**
@@ -145,7 +148,7 @@ public class BitmapOperator {
      * @param totalOfShiftBit 需要移动的位数
      * @return
      */
-    private static long[] shiftBitmap(final Long[] originArray, final short totalOfShiftBit) {
+    private  long[] shiftBitmap(final Long[] originArray, final short totalOfShiftBit) {
         int originSize = originArray.length;
         long[] newArray = new long[originSize];
 
@@ -180,4 +183,8 @@ public class BitmapOperator {
         return bitSet.toString();
     }
 
+    public static void main(String[] args) {
+
+
+    }
 }

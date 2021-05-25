@@ -23,6 +23,6 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
     RoleMapper roleMapper;
     @Override
     public List<Role> getRoles(Integer adminId) {
-        return roleMapper.getRoles(adminId);
+        return roleMapper.getRolesByAdminId(adminId);
     }
 }

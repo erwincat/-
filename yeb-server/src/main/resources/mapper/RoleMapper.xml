@@ -13,7 +13,7 @@
     <sql id="Base_Column_List">
         id, name, nameZh
     </sql>
-    <select id="getRoles" resultType="com.server.pojo.Role">
+    <select id="getRolesByAdminId" resultType="com.server.pojo.Role">
         select r.id,r.name,r.nameZh
         from t_role r,t_admin_role ar
         where r.id = ar.rid and ar.adminId = #{adminId};
