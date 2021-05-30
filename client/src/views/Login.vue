@@ -8,6 +8,13 @@
       <el-form-item prop="password">
         <el-input type="password" v-model="ruleForm.password" autocomplete="off" placeholder="请输入密码"></el-input>
       </el-form-item>
+      <el-form-item prop="code">
+        <el-input size="normal" type="text" v-model="ruleForm.code"
+                  auto-complete="false"
+                  placeholder="点击图片更换验证码" style="width:250px;margin-right: 5px"></el-input>
+        <img :src="captchaUrl" @click="updateCaptcha"/>
+      </el-form-item>
+      <!--<el-checkbox class="loginRemember" v-model="checked">记住我</el-checkbox>-->
       <el-button type="primary" style="width: 100%" @click="submitLogin">登录</el-button>
     </el-form>
   </div>
@@ -34,6 +41,10 @@
           }],
           password: [{
             required: true, message: '请输入密码', trigger:
+              'blur'
+          }],
+          code: [{
+            required: true, message: '请输入验证码', trigger:
               'blur'
           }]
         }
