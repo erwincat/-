@@ -320,9 +320,9 @@
             <el-button style="padding: 3px" size="mini"
                        @click="showEditEmpView(scope.row)">编辑
             </el-button>
-            <el-button style="padding: 3px" size="mini"
+<!--             <el-button style="padding: 3px" size="mini"
                        type="primary">查看高级资料
-            </el-button>
+            </el-button> -->
             <el-button style="padding: 3px" size="mini"
                        type="danger" @click="deleteEmp(scope.row)">删除
             </el-button>

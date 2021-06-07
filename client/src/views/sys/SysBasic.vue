@@ -11,9 +11,6 @@
         <JoblevelMana>
         </JoblevelMana>
       </el-tab-pane>
-      <el-tab-pane label="奖惩规则" name="ecmana">
-        <EcMana></EcMana>
-      </el-tab-pane>
       <el-tab-pane label="权限组" name="permissmana">
         <PermissMana>
         </PermissMana>

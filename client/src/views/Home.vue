@@ -22,17 +22,21 @@
       <el-container>
         <el-aside width="200px">
           <el-menu router unique-opened>
-            <el-submenu :index="index+''" v-for="(item,index) in routes"
+            <div :index="index+''" v-for="(item,index) in routes"
                         v-if="!item.hidden"
                         :key="index">
-              <template slot="title">
+              <!-- <template slot="title">
                 <i style="color: #1accff;margin-right: 5px" :class="item.iconCls"></i>
                 <span>{{item.name}}</span>
-              </template>
+              </template> -->
               <el-menu-item :index="children.path" v-for="(children,indexj) in item.children"
-                            :key="indexj">{{children.name}}
+                            :key="indexj">
+                  <template slot="title">
+                    <!-- <i style="color: #1accff;margin-right: 5px" :class="item.iconCls"></i> -->
+                    <span>{{children.name}}</span>
+                  </template>
               </el-menu-item>
-            </el-submenu>
+            </div>
           </el-menu>
         </el-aside>
         <el-main>
@@ -64,9 +68,6 @@
       }
     },
     methods: {
-      goChat(){
-        this.$router.push('/chat');
-      },
       commandHandler(cmd) {
         if (cmd == 'logout') {
           this.$confirm('此操作将注销登录，是否继续？', '提示', {
