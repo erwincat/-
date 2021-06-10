@@ -22,5 +22,13 @@
         where r.id = ar.rid and ar.adminId = #{adminId};
     </select>
 
+
+    <insert id="insertRecord">
+        insert into t_menu_role(mid,rid) values
+        <foreach collection="mids" item="mid" separator=",">
+            (#{mid},#{rid})
+        </foreach>
+    </insert>
+
 </mapper>
 

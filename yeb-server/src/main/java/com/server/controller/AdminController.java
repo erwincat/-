@@ -21,7 +21,7 @@ import java.util.List;
  * @since 2021-05-07
  */
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/system/admin")
 public class AdminController {
     @Autowired
     private IAdminService adminService;

@@ -17,4 +17,7 @@ public interface IMenuService extends IService<Menu> {
     List<Menu> getMenusByAdminId();
 
     List<Menu> getMenusWithRole();
+
+    //获取所有菜单
+    List<Menu> getAllMenus();
 }

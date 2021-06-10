@@ -9,6 +9,7 @@ import com.server.pojo.Employee;
 import com.server.pojo.RespBean;
 import com.server.pojo.RespPageBean;
 import com.server.service.IEmployeeService;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,8 @@ import java.util.Map;
 public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> implements IEmployeeService {
     @Autowired
     private EmployeeMapper employeeMapper;
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
     /**
      * 获取所有员工（分页）
      *
@@ -73,7 +76,7 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         DecimalFormat decimalFormat = new DecimalFormat("##.00");
         employee.setContractTerm(Double.parseDouble(decimalFormat.format(days/365.00)));
         if (1==employeeMapper.insert(employee)){
-         /*   Employee emp = employeeMapper.getEmployee(employee.getId()).get(0);
+            /*Employee emp = employeeMapper.getEmployee(employee.getId()).get(0);
             //数据库记录发送的消息
             String msgId = UUID.randomUUID().toString();
             MailLog mailLog = new MailLog();
@@ -86,10 +89,10 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
             mailLog.setTryTime(LocalDateTime.now().plusMinutes(MailConstants.MSG_TIMEOUT));
             mailLog.setCreateTime(LocalDateTime.now());
             mailLog.setUpdateTime(LocalDateTime.now());
-            mailLogMapper.insert(mailLog);
+            *//*mailLogMapper.insert(mailLog);*//*
             //发送信息
-            rabbitTemplate.convertAndSend(MailConstants.MAIL_QUEUE_NAME,MailConstants.MAIL_ROUTING_KEY_NAME,emp,new CorrelationData(msgId));
-  */          return RespBean.success("添加成功");
+            rabbitTemplate.convertAndSend(MailConstants.MAIL_QUEUE_NAME,MailConstants.MAIL_ROUTING_KEY_NAME,emp,new CorrelationData(msgId));*/
+           return RespBean.success("添加成功");
         }
         return RespBean.error("添加失败");
     }

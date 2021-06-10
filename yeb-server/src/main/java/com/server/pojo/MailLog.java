@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -15,12 +14,11 @@ import java.time.LocalDateTime;
  *
  * </p>
  *
- * @author fc
- * @since 2021-05-07
+ * @author zhanglishen
+ * @since 2020-11-14
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @TableName("t_mail_log")
 @ApiModel(value="MailLog对象", description="")
 public class MailLog implements Serializable {

@@ -1,0 +1,22 @@
+server:
+  port: 8082
+
+spring:
+  # 邮件配置
+  mail:
+    host: smtp.163.com
+    protocol: smtp
+    default-encoding: UTF-8
+    password: OFLGISZTKCNMVOTH
+    username: fcfangcan123@163.com
+    port: 25
+  rabbitmq:
+    username: yeb
+    password: yeb
+    host: 192.168.182.130
+    port: 5672
+    listener:
+      simple:
+        acknowledge-mode: manual
+    virtual-host: lym
+

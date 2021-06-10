@@ -7,10 +7,8 @@ import com.server.pojo.Menu;
 import com.server.service.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -35,23 +33,25 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     @Override
     public List<Menu> getMenusByAdminId() {
         Integer adminId = ((Admin) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
-        ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
+/*        ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
         //查看缓存中有没有数据
         List<Menu> menus = (List<Menu>) valueOperations.get("menu_" + adminId);
         if (CollectionUtils.isEmpty(menus)) {
-            //如果没有数据,数据库查询,并设置到缓存
-            menus = menuMapper.getMenusByAdminId(adminId);
-            valueOperations.set("menu_" + adminId, menus);
-        }
+            //如果没有数据,数据库查询,并设置到缓存*/
+        List<Menu> menus  = menuMapper.getMenusByAdminId(adminId);
+/*            valueOperations.set("menu_" + adminId, menus);
+        }*/
         return menus;
     }
-
     @Override
     public List<Menu> getMenusWithRole() {
         return menuMapper.getAllMenusWithRole();
     }
 
-
+    @Override
+    public List<Menu> getAllMenus() {
+        return menuMapper.getAllMenus();
+    }
 
 
 }
