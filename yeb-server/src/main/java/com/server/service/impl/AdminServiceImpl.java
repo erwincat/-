@@ -135,7 +135,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         adminRoleMapper.delete(new QueryWrapper<AdminRole>().eq("adminId",adminId));
         Integer result = adminRoleMapper.addRole(adminId, rids);
         if (rids.length == result){
-            return RespBean.success("更新成功");
+            return RespBean.success ("更新成功");
         }
         return RespBean.error("更新失败");
     }
