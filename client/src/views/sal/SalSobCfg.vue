@@ -127,7 +127,7 @@
                   </el-option>
                 </el-select>
               </div>
-              <el-button slot="reference" type="danger">修改工资账套
+              <el-button slot="reference" type="danger">修改工资模板
               </el-button>
             </el-popover>
           </template>

@@ -24,7 +24,7 @@
           </el-button>
         </div>
         <div>
-          <el-upload
+<!--           <el-upload
             action="/system/basic/employee/import"
             :before-upload="beforeUpload"
             :headers="headers"
@@ -40,8 +40,8 @@
           </el-upload>
           <el-button type="success" @click="exportData" icon="el-icondownload">
             导出数据
-          </el-button>
-          <el-button type="primary" icon="el-icon-plus" @click="showAddEmpView">
+          </el-button> -->
+          <el-button type="success" icon="el-icon-plus" @click="showAddEmpView">
             添加用户
           </el-button>
         </div>

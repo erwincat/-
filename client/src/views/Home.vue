@@ -10,7 +10,7 @@
                      size="normal"
                      @click="goChat"></el-button>
           <el-dropdown class="userInfo" @command="commandHandler">
-            <span class="el-dropdown-link">{{user.name}}<i><img :src="user.userFace"></i></span>
+            <span class="el-dropdown-link">{{user.name}}</span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="userinfo">个人中心</el-dropdown-item>
               <el-dropdown-item command="setting">设置中心</el-dropdown-item>

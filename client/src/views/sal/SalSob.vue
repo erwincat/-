@@ -2,7 +2,7 @@
   <div>
     <div style="display: flex;justify-content: space-between">
       <el-button type="primary" icon="el-icon-plus"
-                 @click="showAddSalaryView">添加工资账套
+                 @click="showAddSalaryView">添加工资模板
       </el-button>
       <el-button type="success" icon="el-icon-refresh"
                  @click="initSalaries"></el-button>
@@ -18,7 +18,7 @@
         </el-table-column>
         <el-table-column
           prop="name"
-          label="账套名称"
+          label="模板名称"
           width="120">
         </el-table-column>
         <el-table-column
@@ -131,9 +131,9 @@
         salaries: [],
         dialogVisible: false,
         activeItemIndex: 0,
-        dialogTitle: '添加工资账套',
+        dialogTitle: '添加工资模板',
         salaryItemName: [
-          '账套名称',
+          '模板名称',
           '基本工资',
           '交通补助',
           '午餐补助',
@@ -165,7 +165,7 @@
     },
     methods: {
       showEditSalaryView(data) {
-        this.dialogTitle = '编辑工资账套';
+        this.dialogTitle = '编辑工资模板';
         this.dialogVisible = true;
         this.activeItemIndex = 0;
         this.salary.id = data.id;
@@ -246,7 +246,7 @@
           accumulationFundBase: 0
         };
         this.activeItemIndex = 0;
-        this.dialogTitle = '添加工资账套';
+        this.dialogTitle = '添加工资模板';
         this.dialogVisible = true;
       },
       initSalaries() {

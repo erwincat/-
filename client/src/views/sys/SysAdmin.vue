@@ -13,9 +13,9 @@
                      @click="deleteAdmin(admin)"></el-button>
         </div>
         <div>
-          <div class="img-container">
-            <img :src="admin.userFace" :alt="admin.name" :title="admin.name" class="userface-img">
-          </div>
+          <!-- <div class="img-container"> -->
+            <!-- <img :src="admin.userFace" :alt="admin.name" :title="admin.name" class="userface-img"> -->
+          <!-- </div> -->
         </div>
         <div class="userinfo-container">
           <div>用户名:{{admin.name}}</div>
